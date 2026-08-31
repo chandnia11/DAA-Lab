@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+
+
+
+void kruskalMST(int **cost, int V) {
+
+
+    int parent[100];
+    int edgeCount = 0;
+    int mstEdges = 0;
+    int minCost = 0;
+    int i, j;
+
+    // Initialize parent array
+    for (i = 0; i < V; i++) {
+        parent[i] = i;
+    }
+
+    // Kruskal's algorithm
+    while (mstEdges < V - 1) {
+        int min = 9999;
+        int u = -1;
+        int v = -1;
+
+        // Find the minimum-weight edge.
+        // i < j ensures only upper triangular part is considered.
+        for (i = 0; i < V; i++) {
+            for (j = i + 1; j < V; j++) {
+                if (cost[i][j] < min) {
+                    min = cost[i][j];
+                    u = i;
+                    v = j;
+                }
+            }
+}
